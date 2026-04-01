@@ -51,53 +51,66 @@ select:focus{outline:none;border-color:#3266ad}
 .btn-row{display:flex;gap:8px;align-items:center;margin-bottom:14px}
 .btn-primary{padding:8px 20px;border:none;border-radius:8px;background:#3266ad;color:#fff;font-size:13px;cursor:pointer;font-weight:500}
 .btn-primary:hover{background:#2557a0}
-.btn-ghost{padding:8px 16px;border:0.5px solid #ccc;border-radius:8px;background:#fff;font-size:13px;cursor:pointer;color:#444}
+.btn-ghost{padding:8px 16px;border:0.5px solid #ccc;border-radius:8px;background:#fff;font-size:13px;cursor:pointer;color:#444;white-space:nowrap;}
 .btn-ghost:hover{background:#f0f0f0}
 #status{font-size:12px;color:#888}
 
-/* metrics */
-.metric-table{width:100%;background:#fff;border:0.5px solid #ddd;border-radius:10px;border-collapse:separate;border-spacing:0;margin-bottom:14px;overflow:hidden;font-size:13px}
-.metric-table th{padding:8px 14px;font-size:11px;font-weight:500;color:#888;text-align:right;border-bottom:1px solid #eee;background:#f8f8f6}
+/* 專家優化：為手機版引入橫向捲動保護殼 (Responsive Table Wrapper) */
+.table-responsive { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 14px; border-radius: 10px; border: 0.5px solid #ddd; background: #fff; }
+.metric-table{width:100%; border-collapse:separate; border-spacing:0; min-width: 500px; /* 強制最小寬度，防止擠壓 */}
+.metric-table th{padding:10px 14px;font-size:12px;font-weight:700;color:#1a1a1a;text-align:right;border-bottom:1px solid #eee;background:#f8f8f6;white-space:nowrap;}
 .metric-table th:first-child{text-align:left}
-.metric-table td{padding:10px 14px;border-bottom:0.5px solid #f0f0f0;text-align:right;color:#1a1a1a;font-weight:500;font-size:15px}
-.metric-table td:first-child{text-align:left;font-size:13px;font-weight:500;color:#1a1a1a}
+.metric-table td{padding:12px 14px;border-bottom:0.5px solid #f0f0f0;text-align:right;color:#1a1a1a;font-weight:500;font-size:15px;white-space:nowrap;}
+.metric-table td:first-child{text-align:left;font-size:13px;font-weight:500;color:#1a1a1a;white-space:normal;line-height:1.4;}
 .metric-table tr:last-child td{border-bottom:none}
+
 .up{color:#D85A30}.dn{color:#1D9E75}.neu{color:#aaa}
-.surplus{color:#1D9E75; font-weight:700;} /* 順差綠色 */
-.deficit{color:#D85A30; font-weight:700;} /* 逆差紅色 */
+.surplus{color:#1D9E75; font-weight:700;} 
+.deficit{color:#D85A30; font-weight:700;} 
 
 /* charts */
-/* 專家優化：將全站圖表升級為完美的 3 欄式 (量、值、價 矩陣) */
 .trend-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:14px}
 .chart-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:14px}
-@media (max-width: 1200px) {
-  .trend-grid, .chart-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
-}
-@media (max-width: 768px) {
-  .filter-grid, .trend-grid, .chart-grid { grid-template-columns: 1fr; }
-}
 
 .card{background:#fff;border:0.5px solid #ddd;border-radius:12px;padding:16px}
 .card-title{font-size:13px;font-weight:500;color:#1a1a1a;margin-bottom:12px}
 
-/* 專家優化：新增分析維度分頁樣式 */
-.chart-tabs { display: flex; gap: 8px; margin-bottom: 14px; border-bottom: 2px solid #eee; padding-bottom: 0px; }
-.chart-tab-btn { padding: 10px 20px; border: none; background: transparent; font-size: 15px; font-weight: 600; color: #888; cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -2px; transition: all 0.2s; }
+/* 維度分頁 */
+.chart-tabs { display: flex; gap: 8px; margin-bottom: 14px; border-bottom: 2px solid #eee; padding-bottom: 0px; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch;}
+.chart-tab-btn { padding: 10px 16px; border: none; background: transparent; font-size: 14px; font-weight: 600; color: #888; cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -2px; transition: all 0.2s; white-space: nowrap; }
 .chart-tab-btn:hover { color: #3266ad; }
 .chart-tab-btn.active { color: #3266ad; border-bottom-color: #3266ad; }
 .chart-tab-pane { display: none; }
 .chart-tab-pane.active { display: grid; }
 
-/* table */
-table{width:100%;border-collapse:collapse;font-size:12px}
-th{text-align:left;padding:8px 10px;border-bottom:1px solid #eee;color:#888;font-weight:500;font-size:11px;white-space:nowrap}
-td{padding:7px 10px;border-bottom:0.5px solid #f0f0f0;vertical-align:middle}
-tr:last-child td{border-bottom:none}
+/* 明細 table */
+table.detail-tbl {width:100%;border-collapse:collapse;font-size:12px; min-width: 600px;}
+table.detail-tbl th{text-align:left;padding:8px 10px;border-bottom:1px solid #eee;color:#888;font-weight:500;font-size:12px;white-space:nowrap;background:#f8f8f6;}
+table.detail-tbl td{padding:8px 10px;border-bottom:0.5px solid #f0f0f0;vertical-align:middle;white-space:nowrap;}
 .io-ex{display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#dbeafe;color:#1e40af;font-weight:500}
 .io-im{display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#fce7f3;color:#9d174d;font-weight:500}
 .no-result{text-align:center;padding:40px;color:#aaa;font-size:13px}
 #loading { text-align: center; padding: 50px; font-size: 15px; color: #3266ad; font-weight: 500; }
 #app-content { display: none; }
+
+/* 專家優化：針對手機螢幕 (寬度小於 768px) 的專屬排版校正 */
+@media (max-width: 768px) {
+  body { padding: 10px; }
+  h1 { font-size: 20px; line-height: 1.3; }
+  /* 上方資訊列改為垂直排列，避免按鈕被擠壓 */
+  .info-bar { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .info-bar button { margin-left: 0 !important; align-self: flex-start; padding: 6px 12px; font-size: 13px; }
+  
+  /* 搜尋過濾器改為單欄式直排 */
+  .filter-grid, .trend-grid, .chart-grid { grid-template-columns: 1fr; }
+  
+  /* 分頁按鈕優化 */
+  .chart-tabs { padding-bottom: 4px; }
+  
+  .card { padding: 12px; }
+  /* 手機上微調圖表高度，增加同畫面可視資訊量 */
+  .card > div[style*="height"] { height: 220px !important; }
+}
 </style>
 </head>
 <body>
@@ -199,38 +212,34 @@ tr:last-child td{border-bottom:none}
   </div>
 </div>
 
-<!-- 專家升級：導入「漸進式揭露」，用分頁收納過多的圖表，降低決策認知負荷 -->
 <div class="chart-tabs">
   <button class="chart-tab-btn active" id="btn-chart-co" onclick="switchChartTab('co')">🌍 市場與國家分析</button>
   <button class="chart-tab-btn" id="btn-chart-sp" onclick="switchChartTab('sp')">🐟 魚種與物種分析</button>
   <button class="chart-tab-btn" id="btn-chart-ty" onclick="switchChartTab('ty')">📦 商品與加工型態</button>
 </div>
 
-<!-- 國家面板 -->
 <div id="pane-co" class="chart-grid chart-tab-pane active">
-  <div class="card"><div class="card-title" id="ct-w">重量比較（噸）｜依國家</div><div style="position:relative;height:280px"><canvas id="cW"></canvas></div></div>
-  <div class="card"><div class="card-title" id="ct-v">金額比較（千元）｜與左側對齊</div><div style="position:relative;height:280px"><canvas id="cV"></canvas></div></div>
-  <div class="card"><div class="card-title" id="ct-u" style="color:#d97706;">單價比較（元/公斤）｜與左側對齊</div><div style="position:relative;height:280px"><canvas id="cU"></canvas></div></div>
+  <div class="card"><div class="card-title" id="ct-w">重量比較（噸）</div><div style="position:relative;height:280px"><canvas id="cW"></canvas></div></div>
+  <div class="card"><div class="card-title" id="ct-v">金額比較（千元）</div><div style="position:relative;height:280px"><canvas id="cV"></canvas></div></div>
+  <div class="card"><div class="card-title" id="ct-u" style="color:#d97706;">單價比較（元/公斤）</div><div style="position:relative;height:280px"><canvas id="cU"></canvas></div></div>
 </div>
 
-<!-- 魚種面板 -->
 <div id="pane-sp" class="chart-grid chart-tab-pane">
   <div class="card"><div class="card-title" id="ct-sp-w">魚種重量比較（噸）</div><div style="position:relative;height:280px"><canvas id="cSpW"></canvas></div></div>
-  <div class="card"><div class="card-title" id="ct-sp-v">魚種金額比較（千元）｜與左側對齊</div><div style="position:relative;height:280px"><canvas id="cSpV"></canvas></div></div>
-  <div class="card"><div class="card-title" id="ct-sp-u" style="color:#d97706;">魚種單價比較（元/公斤）｜與左側對齊</div><div style="position:relative;height:280px"><canvas id="cSpU"></canvas></div></div>
+  <div class="card"><div class="card-title" id="ct-sp-v">魚種金額比較（千元）</div><div style="position:relative;height:280px"><canvas id="cSpV"></canvas></div></div>
+  <div class="card"><div class="card-title" id="ct-sp-u" style="color:#d97706;">魚種單價比較（元/公斤）</div><div style="position:relative;height:280px"><canvas id="cSpU"></canvas></div></div>
 </div>
 
-<!-- 類型面板 -->
 <div id="pane-ty" class="chart-grid chart-tab-pane">
   <div class="card"><div class="card-title" id="ct-ty-w">商品類型重量（噸）</div><div style="position:relative;height:280px"><canvas id="cTyW"></canvas></div></div>
-  <div class="card"><div class="card-title" id="ct-ty-v">商品類型金額（千元）｜與左側對齊</div><div style="position:relative;height:280px"><canvas id="cTyV"></canvas></div></div>
-  <div class="card"><div class="card-title" id="ct-ty-u" style="color:#d97706;">商品類型單價（元/公斤）｜與左側對齊</div><div style="position:relative;height:280px"><canvas id="cTyU"></canvas></div></div>
+  <div class="card"><div class="card-title" id="ct-ty-v">商品類型金額（千元）</div><div style="position:relative;height:280px"><canvas id="cTyV"></canvas></div></div>
+  <div class="card"><div class="card-title" id="ct-ty-u" style="color:#d97706;">商品類型單價（元/公斤）</div><div style="position:relative;height:280px"><canvas id="cTyU"></canvas></div></div>
 </div>
 
 <div class="card" style="margin-top: 14px;">
   <div class="card-title" style="display:flex; justify-content:space-between; align-items:center;">
     <span id="tbl-title">明細資料</span>
-    <div>
+    <div style="display:flex; gap:8px;">
       <button class="btn-ghost" onclick="toggleTable()" id="btn-toggle-tbl">展開明細</button>
       <button class="btn-primary" onclick="exportCSV()">匯出 CSV</button>
     </div>
@@ -462,7 +471,6 @@ function groupByTargetCustom(rows, key, tStart, tEnd, bStart, bEnd) {
     if (ym >= bStart && ym <= bEnd) { map[k].wComp += r.weight; map[k].vComp += r.value; }
   });
   
-  // 計算分群後的單價 (確保不會除以零)
   const results = Object.values(map);
   results.forEach(g => {
     g.uTarg = g.wTarg > 0 ? (g.vTarg / g.wTarg) : 0;
@@ -543,7 +551,7 @@ function applyFilter() {
     return;
   }
 
-  // ── Metrics table & 專家升級：貿易順逆差 ──
+  // ── Metrics table & 貿易順逆差 ──
   let twTarget = 0, tvTarget = 0, twCompare = 0, tvCompare = 0;
   let expVTarg = 0, impVTarg = 0, expVComp = 0, impVComp = 0;
 
@@ -575,23 +583,22 @@ function applyFilter() {
     return `<span class="${cls}">${sign}${fmtN(Math.abs(d))}</span><br><span class="${cls}" style="font-size:12px;font-weight:400">${pct(a, b)}</span>`;
   }
 
-  const thStyle = 'font-size:14px; font-weight:700; color:#1a1a1a;';
   let thead = '<tr><th></th>';
-  thead += `<th style="${thStyle}">${bStr} (基期)</th>`;
-  thead += `<th style="${thStyle}">${tStr} (當期)</th>`;
-  thead += `<th style="${thStyle}">差額 / 同期成長率</th>`;
+  thead += `<th>${bStr} (基期)</th>`;
+  thead += `<th>${tStr} (當期)</th>`;
+  thead += `<th>差額 / 同期成長率</th>`;
   thead += '</tr>';
 
-  let wRow = '<tr><td>重量（噸）</td>';
+  let wRow = '<tr><td>重量<br><span style="font-size:11px;color:#888;">(噸)</span></td>';
   wRow += `<td>${fmtW(twCompare)}</td>`;
   wRow += `<td>${fmtW(twTarget)}</td>`;
-  wRow += `<td style="line-height:1.8">${diffCellW(twTarget, twCompare)}</td>`;
+  wRow += `<td style="line-height:1.4">${diffCellW(twTarget, twCompare)}</td>`;
   wRow += '</tr>';
 
-  let vRow = '<tr><td>金額（千元）</td>';
+  let vRow = '<tr><td>金額<br><span style="font-size:11px;color:#888;">(千元)</span></td>';
   vRow += `<td>${fmtN(tvCompare)}</td>`;
   vRow += `<td>${fmtN(tvTarget)}</td>`;
-  vRow += `<td style="line-height:1.8">${diffCellV(tvTarget, tvCompare)}</td>`;
+  vRow += `<td style="line-height:1.4">${diffCellV(tvTarget, tvCompare)}</td>`;
   vRow += '</tr>';
 
   const upCompare = twCompare > 0 ? (tvCompare * 1000) / (twCompare * 1000) : 0;
@@ -604,13 +611,12 @@ function applyFilter() {
     return `<span class="${cls}">${sign}${Math.abs(d).toFixed(1)}</span><br><span class="${cls}" style="font-size:12px;font-weight:400">${pct(a, b)}</span>`;
   }
 
-  let uRow = '<tr><td>單價（元／公斤）</td>';
+  let uRow = '<tr><td>單價<br><span style="font-size:11px;color:#888;">(元/公斤)</span></td>';
   uRow += `<td>${fmtUp(upCompare)}</td>`;
   uRow += `<td>${fmtUp(upTarget)}</td>`;
-  uRow += `<td style="line-height:1.8">${(twCompare > 0 && twTarget > 0) ? diffCellUp(upTarget, upCompare) : '—'}</td>`;
+  uRow += `<td style="line-height:1.4">${(twCompare > 0 && twTarget > 0) ? diffCellUp(upTarget, upCompare) : '—'}</td>`;
   uRow += '</tr>';
 
-  // 專家升級：自動計算貿易餘額 (順逆差)，僅在選擇「全部進出口」時顯示
   let balanceRow = '';
   if (!io) {
     const balComp = expVComp - impVComp;
@@ -618,18 +624,18 @@ function applyFilter() {
     const dBal = balTarg - balComp;
     
     function fmtBal(val) {
-        if (val > 0) return `<span class="surplus">+${fmtN(Math.abs(val))} (順差)</span>`;
-        if (val < 0) return `<span class="deficit">-${fmtN(Math.abs(val))} (逆差)</span>`;
+        if (val > 0) return `<span class="surplus">+${fmtN(Math.abs(val))}</span>`;
+        if (val < 0) return `<span class="deficit">-${fmtN(Math.abs(val))}</span>`;
         return `<span>0</span>`;
     }
     
-    balanceRow = '<tr style="background:#fdfdfc;"><td>🎯 總經指標：貿易餘額（千元）</td>';
+    balanceRow = '<tr style="background:#fdfdfc;"><td>🎯貿易餘額<br><span style="font-size:11px;color:#888;">(順/逆差)</span></td>';
     balanceRow += `<td>${fmtBal(balComp)}</td>`;
     balanceRow += `<td>${fmtBal(balTarg)}</td>`;
     
     const clsBal = dBal > 0 ? 'up' : dBal < 0 ? 'dn' : 'neu';
     const signBal = dBal > 0 ? '+' : (dBal < 0 ? '-' : '');
-    balanceRow += `<td style="line-height:1.8"><span class="${clsBal}">${signBal}${fmtN(Math.abs(dBal))}</span><br><span style="font-size:11px;color:#888;">(順逆差增減)</span></td>`;
+    balanceRow += `<td style="line-height:1.4"><span class="${clsBal}">${signBal}${fmtN(Math.abs(dBal))}</span><br><span style="font-size:11px;color:#888;">(增減)</span></td>`;
     balanceRow += '</tr>';
   }
 
@@ -638,9 +644,13 @@ function applyFilter() {
   if (io === "進口") ioLabel = "進口";
 
   const metricTitle = `🎯 水產品${ioLabel}貿易統計`;
+  
+  // 專家優化：將表格用 .table-responsive 包裝，啟用橫向滑動
   document.getElementById('metrics').innerHTML =
     `<div style="font-size:18px; font-weight:800; color:#0f172a; margin-bottom:12px; padding-left:4px; letter-spacing:0.5px;">${metricTitle}</div>
-     <table class="metric-table"><thead>${thead}</thead><tbody>${wRow}${vRow}${uRow}${balanceRow}</tbody></table>`;
+     <div class="table-responsive">
+       <table class="metric-table"><thead>${thead}</thead><tbody>${wRow}${vRow}${uRow}${balanceRow}</tbody></table>
+     </div>`;
 
   // ── 折線圖資料準備 ──
   chartsToDestroy.forEach(c => { if(c) c.destroy(); });
@@ -680,8 +690,8 @@ function applyFilter() {
     data: { 
       labels: trendLabels, 
       datasets: [
-        { label: `基期 (${bStr})`, data: trendDataCompW, borderColor: '#93b8e0', backgroundColor: '#93b8e0', tension: 0.3, spanGaps: true },
-        { label: `當期 (${tStr})`, data: trendDataTargW, borderColor: '#3266ad', backgroundColor: '#3266ad', tension: 0.3, spanGaps: true }
+        { label: `基期`, data: trendDataCompW, borderColor: '#93b8e0', backgroundColor: '#93b8e0', tension: 0.3, spanGaps: true },
+        { label: `當期`, data: trendDataTargW, borderColor: '#3266ad', backgroundColor: '#3266ad', tension: 0.3, spanGaps: true }
       ] 
     }, options: commonLineOptions
   });
@@ -691,8 +701,8 @@ function applyFilter() {
     data: { 
       labels: trendLabels, 
       datasets: [
-        { label: `基期 (${bStr})`, data: trendDataCompV, borderColor: '#f4a7c4', backgroundColor: '#f4a7c4', tension: 0.3, spanGaps: true },
-        { label: `當期 (${tStr})`, data: trendDataTargV, borderColor: '#d4537e', backgroundColor: '#d4537e', tension: 0.3, spanGaps: true }
+        { label: `基期`, data: trendDataCompV, borderColor: '#f4a7c4', backgroundColor: '#f4a7c4', tension: 0.3, spanGaps: true },
+        { label: `當期`, data: trendDataTargV, borderColor: '#d4537e', backgroundColor: '#d4537e', tension: 0.3, spanGaps: true }
       ] 
     }, options: commonLineOptions
   });
@@ -702,38 +712,33 @@ function applyFilter() {
     data: { 
       labels: trendLabels, 
       datasets: [
-        { label: `基期 (${bStr})`, data: trendDataCompU, borderColor: '#fcd34d', backgroundColor: '#fcd34d', tension: 0.3, spanGaps: true },
-        { label: `當期 (${tStr})`, data: trendDataTargU, borderColor: '#d97706', backgroundColor: '#d97706', tension: 0.3, spanGaps: true }
+        { label: `基期`, data: trendDataCompU, borderColor: '#fcd34d', backgroundColor: '#fcd34d', tension: 0.3, spanGaps: true },
+        { label: `當期`, data: trendDataTargU, borderColor: '#d97706', backgroundColor: '#d97706', tension: 0.3, spanGaps: true }
       ] 
     }, options: { ...commonLineOptions, scales: { y: { ticks: { callback: v => v.toFixed(1) } } } }
   });
 
-  // ── 柱狀圖 (3x3 矩陣：重量、金額、單價) ──
+  // ── 柱狀圖 (3x3 矩陣) ──
   const spList = [...selSp];
   const tyList = [...selTy];
-  const coList = [...selCo]; // 專家升級：加入國家陣列
+  const coList = [...selCo]; 
 
-  // 專家升級：動態情境標籤，確保切換分頁時不會產生「情境迷失」
   const spLabel = spList.length ? spList.map(s => s.replace(/^\d+\s/, '')).join('、') : '全魚種';
   const tyLabel = tyList.length ? tyList.map(t => t.replace(/^\d+\s/, '')).join('、') : '全類型';
   const coLabel = coList.length ? coList.map(c => c.replace(/^[A-Z]{2}\s/, '')).join('、') : '全市場';
+  const rankLabel = `(前 10 大)`;
   
-  const rankLabel = `(前 10 大, 以當期重量排序)`;
-  
-  // 國家面板：提示目前的魚種與類型
   document.getElementById('ct-w').textContent = `重量（噸）｜${spLabel} / ${tyLabel} ${rankLabel}`;
-  document.getElementById('ct-v').textContent = `金額（千元）｜與左側對齊`;
-  document.getElementById('ct-u').textContent = `單價（元/公斤）｜與左側對齊`;
+  document.getElementById('ct-v').textContent = `金額（千元）`;
+  document.getElementById('ct-u').textContent = `單價（元/公斤）`;
   
-  // 魚種面板：提示目前的市場與類型
   document.getElementById('ct-sp-w').textContent = `魚種重量（噸）｜${coLabel} / ${tyLabel} ${rankLabel}`;
-  document.getElementById('ct-sp-v').textContent = `魚種金額（千元）｜與左側對齊`;
-  document.getElementById('ct-sp-u').textContent = `魚種單價（元/公斤）｜與左側對齊`;
+  document.getElementById('ct-sp-v').textContent = `魚種金額（千元）`;
+  document.getElementById('ct-sp-u').textContent = `魚種單價（元/公斤）`;
 
-  // 類型面板：提示目前的市場與魚種 (解決您的痛點)
   document.getElementById('ct-ty-w').textContent = `類型重量（噸）｜${coLabel} / ${spLabel} ${rankLabel}`;
-  document.getElementById('ct-ty-v').textContent = `類型金額（千元）｜與左側對齊`;
-  document.getElementById('ct-ty-u').textContent = `類型單價（元/公斤）｜與左側對齊`;
+  document.getElementById('ct-ty-v').textContent = `類型金額（千元）`;
+  document.getElementById('ct-ty-u').textContent = `類型單價（元/公斤）`;
 
   function mkChart(id, groupedData, kComp, kTarg, cComp, cTarg, labelFormatter, isDecimal = false) {
     const labels = groupedData.map(g => labelFormatter(g.label));
@@ -742,8 +747,8 @@ function applyFilter() {
       data: {
         labels,
         datasets: [
-          { label: `基期 (${bStr})`, data: groupedData.map(g => parseFloat(g[kComp].toFixed(isDecimal ? 1 : 3))), backgroundColor: cComp },
-          { label: `當期 (${tStr})`, data: groupedData.map(g => parseFloat(g[kTarg].toFixed(isDecimal ? 1 : 3))), backgroundColor: cTarg }
+          { label: `基期`, data: groupedData.map(g => parseFloat(g[kComp].toFixed(isDecimal ? 1 : 3))), backgroundColor: cComp },
+          { label: `當期`, data: groupedData.map(g => parseFloat(g[kTarg].toFixed(isDecimal ? 1 : 3))), backgroundColor: cTarg }
         ]
       },
       options: {
@@ -751,14 +756,7 @@ function applyFilter() {
         maintainAspectRatio: false,
         plugins: {
           legend: { display: true, position: 'top', labels: { boxWidth: 10, font: { size: 11 } } },
-          tooltip: {
-            callbacks: {
-              label: function(context) {
-                let val = context.raw;
-                return context.dataset.label + ': ' + (isDecimal ? val.toFixed(1) : val.toLocaleString());
-              }
-            }
-          }
+          tooltip: { callbacks: { label: function(context) { let val = context.raw; return context.dataset.label + ': ' + (isDecimal ? val.toFixed(1) : val.toLocaleString()); } } }
         },
         scales: {
           x: { ticks: { font: { size: 10 }, maxRotation: 35, autoSkip: false } },
@@ -768,7 +766,6 @@ function applyFilter() {
     });
   }
 
-  // 統一以「當期重量 (wTarg)」排序，抓出前十大，確保 3 張圖表 X 軸完全對齊
   const sortW = (a, b) => b.wTarg - a.wTarg;
 
   const groupedCo = groupByTargetCustom(baseRows, 'country', tStart, tEnd, bStart, bEnd).sort(sortW).slice(0, 10);
@@ -797,7 +794,7 @@ function applyFilter() {
     });
     
   currentAggData = agg; 
-  document.getElementById('tbl-title').textContent = `前 10 大魚種明細（依年度與重量排序）｜包含當期與基期`;
+  document.getElementById('tbl-title').textContent = `明細資料 (前 10 大魚種)`;
 
   const expRows = agg.filter(r => r.io.includes('出'));
   const impRows = agg.filter(r => r.io.includes('進'));
@@ -816,22 +813,27 @@ function applyFilter() {
     </tr>`).join('');
   }
 
+  // 專家優化：針對下方的明細表也加入 RWD 橫向捲動保護殼
   document.getElementById('tbl').innerHTML = `
     <div style="display:flex; gap:8px; margin-bottom:12px;">
       <button class="btn-ghost" id="btn-tab-ex" style="background:#dbeafe; color:#1e40af; border-color:#dbeafe;" onclick="switchTab('ex')">出口明細 (${expRows.length})</button>
       <button class="btn-ghost" id="btn-tab-im" onclick="switchTab('im')">進口明細 (${impRows.length})</button>
     </div>
     <div id="tab-ex" class="tab-pane">
-      <table>
-        <thead><tr><th>進出口</th><th>年度</th><th>月份</th><th>國家</th><th>魚種</th><th>類型</th><th style="text-align:right">重量(噸)</th><th style="text-align:right">金額(千元)</th></tr></thead>
-        <tbody>${buildTbody(expRows)}</tbody>
-      </table>
+      <div class="table-responsive">
+        <table class="detail-tbl">
+          <thead><tr><th>進出口</th><th>年度</th><th>月份</th><th>國家</th><th>魚種</th><th>類型</th><th style="text-align:right">重量(噸)</th><th style="text-align:right">金額(千元)</th></tr></thead>
+          <tbody>${buildTbody(expRows)}</tbody>
+        </table>
+      </div>
     </div>
     <div id="tab-im" class="tab-pane" style="display:none;">
-      <table>
-        <thead><tr><th>進出口</th><th>年度</th><th>月份</th><th>國家</th><th>魚種</th><th>類型</th><th style="text-align:right">重量(噸)</th><th style="text-align:right">金額(千元)</th></tr></thead>
-        <tbody>${buildTbody(impRows)}</tbody>
-      </table>
+      <div class="table-responsive">
+        <table class="detail-tbl">
+          <thead><tr><th>進出口</th><th>年度</th><th>月份</th><th>國家</th><th>魚種</th><th>類型</th><th style="text-align:right">重量(噸)</th><th style="text-align:right">金額(千元)</th></tr></thead>
+          <tbody>${buildTbody(impRows)}</tbody>
+        </table>
+      </div>
     </div>
   `;
 }
@@ -912,7 +914,6 @@ function toggleTable() {
   document.getElementById('btn-toggle-tbl').textContent = isTableOpen ? '收合明細' : '展開明細';
 }
 
-// 新增：圖表維度分頁切換功能
 window.switchChartTab = function(tab) {
   ['co', 'sp', 'ty'].forEach(t => {
     document.getElementById('pane-' + t).classList.remove('active');
